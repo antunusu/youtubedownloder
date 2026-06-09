@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoutDown - Modern YouTube Downloader</title>
+    <meta name="description" content="Download YouTube videos in high quality. Fast, free, and secure.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for elegant UI elements -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <header>
+        <div class="logo">
+            <i class="ph-fill ph-youtube-logo text-accent"></i>
+            <span>YoutDown</span>
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">FAQ</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="badge">🚀 The fastest YouTube downloader</div>
+            <h1>Download any video in <span>seconds</span></h1>
+            <p>Paste your YouTube link below to convert and download your video in high quality 1080p MP4 or audio MP3 formats. Free and secure.</p>
+            
+            <div class="search-container">
+                <form id="url-form">
+                    <div class="input-group">
+                        <i class="ph ph-link"></i>
+                        <input type="url" id="url-input" placeholder="Paste YouTube link here..." required autocomplete="off">
+                        <button type="button" id="paste-btn" class="icon-btn" title="Paste from clipboard">
+                            <i class="ph ph-clipboard"></i>
+                        </button>
+                    </div>
+                    <button type="submit" id="analyze-btn" class="primary-btn">
+                        <span>Start</span>
+                        <i class="ph-bold ph-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Loading state -->
+        <section id="loading-state" class="state-container hidden">
+            <div class="loader">
+                <div class="spinner"></div>
+                <p>Analyzing video URL...</p>
+            </div>
+        </section>
+
+        <!-- Error state -->
+        <section id="error-state" class="state-container hidden">
+            <div class="error-card">
+                <i class="ph-fill ph-warning-circle"></i>
+                <div class="error-content">
+                    <h3>Oops! Something went wrong</h3>
+                    <p id="error-message">Invalid URL or the video is restricted.</p>
+                </div>
+                <button type="button" class="btn-text" id="retry-btn">Try Again</button>
+            </div>
+        </section>
+
+        <!-- Results state -->
+        <section id="result-state" class="state-container hidden">
+            <div class="result-card">
+                <div class="video-info">
+                    <div class="thumbnail-container">
+                        <img id="video-thumb" src="" alt="Video Thumbnail">
+                        <span id="video-duration" class="duration-badge">00:00</span>
+                    </div>
+                    <div class="video-details">
+                        <h2 id="video-title">Video Title</h2>
+                        <p class="source"><i class="ph-fill ph-youtube-logo"></i> YouTube</p>
+                    </div>
+                </div>
+
+                <div class="download-options">
+                    <h3>Select Format</h3>
+                    <div class="format-grid" id="format-grid">
+                        <!-- Format buttons will be injected here via JS -->
+                    </div>
+                </div>
+
+                <div id="download-progress" class="progress-container hidden">
+                    <div class="progress-details">
+                        <span class="status-text">Preparing file...</span>
+                        <i class="ph ph-spinner-gap spin"></i>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <div id="success-message" class="success-banner hidden">
+                    <i class="ph-fill ph-check-circle"></i>
+                    <span>Download started successfully!</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="icon-box"><i class="ph ph-lightning"></i></div>
+                <h3>Blazing Fast</h3>
+                <p>Our optimized backend ensures the fastest possible conversion and download speeds.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="ph ph-monitor-play"></i></div>
+                <h3>High Quality</h3>
+                <p>Download up to 1080p Full HD video resolution or high bitrate MP3 audio.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="ph ph-shield-check"></i></div>
+                <h3>100% Safe</h3>
+                <p>No annoying popups, no malware, and your downloaded files are automatically securely deleted from our servers.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 YoutDown. Not affiliated with YouTube.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
